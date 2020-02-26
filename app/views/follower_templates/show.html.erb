@@ -11,71 +11,55 @@
         </a>
       </div>
 
-      <!-- Edit link follower start -->
       <div class="col">
         <a href="/followers/<%= @follower.id %>/edit" class="btn btn-block btn-outline-secondary">
           Edit follower
         </a>
       </div>
-      <!-- Edit link follower end -->
 
-      <!-- Delete link follower start -->
       <div class="col">
         <a href="/delete_follower/<%= @follower.id %>" class="btn btn-block btn-outline-secondary">
           Delete follower
         </a>
       </div>
-      <!-- Delete link follower end -->
     </div>
 
     <dl>
       <dt>
         Sender
       </dt>
-      <!-- Display sender_id start -->
       <dd>
         <%= @follower.sender_id %>
       </dd>
-      <!-- Display sender_id end -->
 
       <dt>
         Recipient
       </dt>
-      <!-- Display recipient_id start -->
       <dd>
         <%= @follower.recipient_id %>
       </dd>
-      <!-- Display recipient_id end -->
 
       <dt>
         Status
       </dt>
-      <!-- Display status start -->
       <dd>
         <%= @follower.status %>
       </dd>
-      <!-- Display status end -->
 
       <dt>
         Created at
       </dt>
-      <!-- Display created_at start -->
       <dd>
         <%= time_ago_in_words(@follower.created_at) %> ago
       </dd>
-      <!-- Display created_at end -->
 
       <dt>
         Updated at
       </dt>
-      <!-- Display updated_at start -->
       <dd>
         <%= time_ago_in_words(@follower.updated_at) %> ago
       </dd>
-      <!-- Display updated_at end -->
     </dl>
   </div>
 </div>
 
-<!-- Show Page Customization starts -->
-<!-- Show Page Customization end -->

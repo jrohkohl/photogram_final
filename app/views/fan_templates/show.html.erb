@@ -11,62 +11,48 @@
         </a>
       </div>
 
-      <!-- Edit link fan start -->
       <div class="col">
         <a href="/fans/<%= @fan.id %>/edit" class="btn btn-block btn-outline-secondary">
           Edit fan
         </a>
       </div>
-      <!-- Edit link fan end -->
 
-      <!-- Delete link fan start -->
       <div class="col">
         <a href="/delete_fan/<%= @fan.id %>" class="btn btn-block btn-outline-secondary">
           Delete fan
         </a>
       </div>
-      <!-- Delete link fan end -->
     </div>
 
     <dl>
       <dt>
         Fan
       </dt>
-      <!-- Display fan_id start -->
       <dd>
         <%= @fan.fan_id %>
       </dd>
-      <!-- Display fan_id end -->
 
       <dt>
         Photo
       </dt>
-      <!-- Display photo_id start -->
       <dd>
         <%= @fan.photo_id %>
       </dd>
-      <!-- Display photo_id end -->
 
       <dt>
         Created at
       </dt>
-      <!-- Display created_at start -->
       <dd>
         <%= time_ago_in_words(@fan.created_at) %> ago
       </dd>
-      <!-- Display created_at end -->
 
       <dt>
         Updated at
       </dt>
-      <!-- Display updated_at start -->
       <dd>
         <%= time_ago_in_words(@fan.updated_at) %> ago
       </dd>
-      <!-- Display updated_at end -->
     </dl>
   </div>
 </div>
 
-<!-- Show Page Customization starts -->
-<!-- Show Page Customization end -->
