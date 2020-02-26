@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Fan resource:
+
+  # CREATE
+  get("/fans/new", { :controller => "fans", :action => "new_form" })
+  post("/create_fan", { :controller => "fans", :action => "create_row" })
+
+  # READ
+  get("/fans", { :controller => "fans", :action => "index" })
+  get("/fans/:id_to_display", { :controller => "fans", :action => "show" })
+
+  # UPDATE
+  get("/fans/:prefill_with_id/edit", { :controller => "fans", :action => "edit_form" })
+  post("/update_fan/:id_to_modify", { :controller => "fans", :action => "update_row" })
+
+  # DELETE
+  get("/delete_fan/:id_to_remove", { :controller => "fans", :action => "destroy_row" })
+
+  #------------------------------
+
   # Routes for the Comment resource:
 
   # CREATE
