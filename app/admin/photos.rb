@@ -1,6 +1,6 @@
 ActiveAdmin.register Photo do
 
- permit_params :caption, :owner_id, :image
+ permit_params :caption, :owner_id, :image, :likes_count, :comments_count
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

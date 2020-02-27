@@ -140,6 +140,58 @@
               <% end %>
             <% end %>
           </div>
+          
+          <div class="form-group">
+            <% likes_count_was_invalid = resource.errors.include?(:likes_count) %>
+
+            <% likes_count_class = "form-control" %>
+
+            <% if was_validated %>
+              <% if likes_count_was_invalid %>
+                <% likes_count_class << " is-invalid" %>
+              <% else %>
+                <% likes_count_class << " is-valid" %>
+              <% end %>
+            <% end %>
+
+            <%= f.label :likes_count %>
+
+            <%= f.number_field :likes_count, :class => likes_count_class, :placeholder => "Enter likes count" %>
+
+            <% if likes_count_was_invalid %>
+              <% resource.errors.full_messages_for(:likes_count).each do |message| %>
+                <div class="invalid-feedback d-flex">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          
+          <div class="form-group">
+            <% comments_count_was_invalid = resource.errors.include?(:comments_count) %>
+
+            <% comments_count_class = "form-control" %>
+
+            <% if was_validated %>
+              <% if comments_count_was_invalid %>
+                <% comments_count_class << " is-invalid" %>
+              <% else %>
+                <% comments_count_class << " is-valid" %>
+              <% end %>
+            <% end %>
+
+            <%= f.label :comments_count %>
+
+            <%= f.number_field :comments_count, :class => comments_count_class, :placeholder => "Enter comments count" %>
+
+            <% if comments_count_was_invalid %>
+              <% resource.errors.full_messages_for(:comments_count).each do |message| %>
+                <div class="invalid-feedback d-flex">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
           <%= f.button class: "btn btn-outline-primary btn-block" %>
 
           <hr>

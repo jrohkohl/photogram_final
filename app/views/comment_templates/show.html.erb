@@ -12,15 +12,19 @@
       </div>
 
       <div class="col">
-        <a href="/comments/<%= @comment.id %>/edit" class="btn btn-block btn-outline-secondary">
-          Edit comment
-        </a>
+        <% if current_user == @comment.owner %>
+          <a href="/comments/<%= @comment.id %>/edit" class="btn btn-block btn-sm btn-outline-secondary">
+            Edit comment
+          </a>
+        <% end %>
       </div>
 
       <div class="col">
-        <a href="/delete_comment/<%= @comment.id %>" class="btn btn-block btn-outline-secondary">
-          Delete comment
-        </a>
+        <% if current_user == @comment.owner %>
+          <a href="/delete_comment/<%= @comment.id %>" class="btn btn-block btn-sm btn-outline-secondary">
+            Delete comment
+          </a>
+        <% end %>
       </div>
     </div>
 
@@ -33,17 +37,25 @@
       </dd>
 
       <dt>
-        Owner
+        Author
       </dt>
       <dd>
-        <%= @comment.owner_id %>
+        <% if @comment.owner.present? %>
+          <a href="/users/<%= @comment.author_id %>">
+            <%= @comment.owner.email %>
+          </a>
+        <% end %>
       </dd>
 
       <dt>
         Photo
       </dt>
       <dd>
-        <%= @comment.photo_id %>
+        <% if @comment.photo.present? %>
+          <a href="/photos/<%= @comment.photo_id %>">
+            <%= @comment.photo.caption %>
+          </a>
+        <% end %>
       </dd>
 
       <dt>

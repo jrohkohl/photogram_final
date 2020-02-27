@@ -7,30 +7,6 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :photo_id, "Photo" %>
-    <div class="row">
-      <div class='col-md-6 mb-1'>
-        <%= f.text_field :photo_id_gteq, :class => "form-control", :placeholder => "Photo greater than or equal to" %>
-      </div>
-      <div class='col-md-6'>
-        <%= f.text_field :photo_id_lteq, :class => "form-control", :placeholder => "Photo less than or equal to" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :owner_id, "Owner" %>
-    <div class="row">
-      <div class='col-md-6 mb-1'>
-        <%= f.text_field :owner_id_gteq, :class => "form-control", :placeholder => "Owner greater than or equal to" %>
-      </div>
-      <div class='col-md-6'>
-        <%= f.text_field :owner_id_lteq, :class => "form-control", :placeholder => "Owner less than or equal to" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
     <%= f.label :created_at, "Created at" %>
     <div class="row">
       <div class='col-md-6 mb-1'>
@@ -71,6 +47,15 @@
   </script>
 
 
+  <div class="form-group">
+    <%= f.label :owner_email_cont, "User email contains" %>
+    <%= f.text_field :owner_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :photo_caption_cont, "Photo caption contains" %>
+    <%= f.text_field :photo_caption_cont, :class => "form-control", :placeholder => "Photo caption contains" %>
+  </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
