@@ -1,0 +1,16 @@
+<form action="/create_like_from_photo" method="post">
+
+  <div class="form-group">
+    <label for="fan_id">
+      Fan
+    </label>
+
+    <%= select_tag(:fan_id, options_from_collection_for_select(User.all, :id, :email, @like.fan_id), :class => "form-control") %>
+  </div>
+
+  <input type="hidden" name="photo_id" value="<%= @photo.id %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create like
+  </button>
+</form>

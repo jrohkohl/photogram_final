@@ -33,7 +33,7 @@
         </th>
 
         <th>
-          Owner
+          Author
         </th>
 
         <th>
@@ -63,11 +63,19 @@
         </td>
 
         <td>
-          <%= comment.owner_id %>
+          <% if comment.owner.present? %>
+            <a href="/users/<%= comment.owner.id %>">
+              <%= comment.owner.email %>
+            </a>
+          <% end %>
         </td>
 
         <td>
-          <%= comment.photo_id %>
+          <% if comment.photo.present? %>
+            <a href="/photos/<%= comment.photo.id %>">
+              <%= comment.photo.caption %>
+            </a>
+          <% end %>
         </td>
 
         <td>

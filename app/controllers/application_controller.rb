@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, :keys => [:is_private, :username])
+    devise_parameter_sanitizer.permit(:sign_up, :keys => [:is_private, :username, :likes_count, :comments_count])
 
-    devise_parameter_sanitizer.permit(:account_update, :keys => [:is_private, :username])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:is_private, :username, :likes_count, :comments_count])
   end
 end
