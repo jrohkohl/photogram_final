@@ -1,0 +1,35 @@
+<h1>
+  Add a new like
+</h1>
+
+
+<hr>
+
+<form action="/create_like" method="post">
+
+  <div class="form-group">
+    <label for="fan_id">
+      Fan
+    </label>
+
+    <%= select_tag(:fan_id, options_from_collection_for_select(User.all, :id, :email, @like.fan_id), :class => "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <label for="photo_id">
+      Photo
+    </label>
+
+    <%= select_tag(:photo_id, options_from_collection_for_select(Photo.all, :id, :caption, @like.photo_id), :class => "form-control") %>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create like
+  </button>
+</form>
+
+<hr>
+
+<a href="/likes">
+  Go back
+</a>

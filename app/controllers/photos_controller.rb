@@ -1,12 +1,24 @@
 class PhotosController < ApplicationController
+  before_action :current_user_must_be_photo_poster, :only => [:show, :edit_form, :update_row, :destroy_row]
+
+  def current_user_must_be_photo_poster
+    photo = Photo.find(params["id_to_display"] || params["prefill_with_id"] || params["id_to_modify"] || params["id_to_remove"])
+
+    unless current_user == photo.poster
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @q = Photo.ransack(params[:q])
-    @photos = @q.result(:distinct => true).page(params[:page]).per(10)
+    @photos = @q.result(:distinct => true).includes(:poster, :comments, :likes, :fans).page(params[:page]).per(10)
 
     render("photo_templates/index.html.erb")
   end
 
   def show
+    @like = Like.new
+    @comment = Comment.new
     @photo = Photo.find(params.fetch("id_to_display"))
 
     render("photo_templates/show.html.erb")
@@ -24,6 +36,8 @@ class PhotosController < ApplicationController
     @photo.caption = params.fetch("caption")
     @photo.owner_id = params.fetch("owner_id")
     @photo.image = params.fetch("image")
+    @photo.likes_count = params.fetch("likes_count")
+    @photo.comments_count = params.fetch("comments_count")
 
     if @photo.valid?
       @photo.save
@@ -44,8 +58,10 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params.fetch("id_to_modify"))
 
     @photo.caption = params.fetch("caption")
-    @photo.owner_id = params.fetch("owner_id")
+    
     @photo.image = params.fetch("image")
+    @photo.likes_count = params.fetch("likes_count")
+    @photo.comments_count = params.fetch("comments_count")
 
     if @photo.valid?
       @photo.save
@@ -54,6 +70,14 @@ class PhotosController < ApplicationController
     else
       render("photo_templates/edit_form_with_errors.html.erb")
     end
+  end
+
+  def destroy_row_from_poster
+    @photo = Photo.find(params.fetch("id_to_remove"))
+
+    @photo.destroy
+
+    redirect_to("/users/#{@photo.owner_id}", notice: "Photo deleted successfully.")
   end
 
   def destroy_row
