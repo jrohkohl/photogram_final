@@ -41,6 +41,14 @@
         </th>
 
         <th>
+          Likes count
+        </th>
+
+        <th>
+          Comments count
+        </th>
+
+        <th>
           Created at
         </th>
 
@@ -63,11 +71,23 @@
         </td>
 
         <td>
-          <%= photo.owner_id %>
+          <% if photo.poster.present? %>
+            <a href="/users/<%= photo.poster.id %>">
+              <%= photo.poster.email %>
+            </a>
+          <% end %>
         </td>
 
         <td>
           <%= photo.image %>
+        </td>
+
+        <td>
+          <%= photo.likes_count %>
+        </td>
+
+        <td>
+          <%= photo.comments_count %>
         </td>
 
         <td>

@@ -7,20 +7,25 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :image_cont, "Image contains" %>
-    <%= f.text_field :image_cont, :class => "form-control", :placeholder => "Image contains" %>
+    <%= f.label :comments_count_cont, "Comments count contains" %>
+    <%= f.text_field :comments_count_cont, :class => "form-control", :placeholder => "Comments count contains" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :owner_id, "Owner" %>
+    <%= f.label :likes_count, "Likes count" %>
     <div class="row">
       <div class='col-md-6 mb-1'>
-        <%= f.text_field :owner_id_gteq, :class => "form-control", :placeholder => "Owner greater than or equal to" %>
+        <%= f.text_field :likes_count_gteq, :class => "form-control", :placeholder => "Likes count greater than or equal to" %>
       </div>
       <div class='col-md-6'>
-        <%= f.text_field :owner_id_lteq, :class => "form-control", :placeholder => "Owner less than or equal to" %>
+        <%= f.text_field :likes_count_lteq, :class => "form-control", :placeholder => "Likes count less than or equal to" %>
       </div>
     </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image_cont, "Image contains" %>
+    <%= f.text_field :image_cont, :class => "form-control", :placeholder => "Image contains" %>
   </div>
 
   <div class="form-group">
@@ -64,6 +69,20 @@
   </script>
 
 
+  <div class="form-group">
+    <%= f.label :poster_email_cont, "User email contains" %>
+    <%= f.text_field :poster_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :comments_body_cont, "Comment body contains" %>
+    <%= f.text_field :comments_body_cont, :class => "form-control", :placeholder => "Comment body contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :fans_email_cont, "User email contains" %>
+    <%= f.text_field :fans_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+  </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>

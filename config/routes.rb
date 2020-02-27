@@ -2,41 +2,46 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "photos#index"
-  # Routes for the Follower resource:
+  # Routes for the Follow request resource:
 
   # CREATE
-  get("/followers/new", { :controller => "followers", :action => "new_form" })
-  post("/create_follower", { :controller => "followers", :action => "create_row" })
+  get("/follow_requests/new", { :controller => "follow_requests", :action => "new_form" })
+  post("/create_follow_request", { :controller => "follow_requests", :action => "create_row" })
 
   # READ
-  get("/followers", { :controller => "followers", :action => "index" })
-  get("/followers/:id_to_display", { :controller => "followers", :action => "show" })
+  get("/follow_requests", { :controller => "follow_requests", :action => "index" })
+  get("/follow_requests/:id_to_display", { :controller => "follow_requests", :action => "show" })
 
   # UPDATE
-  get("/followers/:prefill_with_id/edit", { :controller => "followers", :action => "edit_form" })
-  post("/update_follower/:id_to_modify", { :controller => "followers", :action => "update_row" })
+  get("/follow_requests/:prefill_with_id/edit", { :controller => "follow_requests", :action => "edit_form" })
+  post("/update_follow_request/:id_to_modify", { :controller => "follow_requests", :action => "update_row" })
 
   # DELETE
-  get("/delete_follower/:id_to_remove", { :controller => "followers", :action => "destroy_row" })
+  get("/delete_follow_request/:id_to_remove", { :controller => "follow_requests", :action => "destroy_row" })
+  get("/delete_follow_request_from_sender/:id_to_remove", { :controller => "follow_requests", :action => "destroy_row_from_sender" })
+  get("/delete_follow_request_from_recipient/:id_to_remove", { :controller => "follow_requests", :action => "destroy_row_from_recipient" })
 
   #------------------------------
 
-  # Routes for the Fan resource:
+  # Routes for the Like resource:
 
   # CREATE
-  get("/fans/new", { :controller => "fans", :action => "new_form" })
-  post("/create_fan", { :controller => "fans", :action => "create_row" })
+  get("/likes/new", { :controller => "likes", :action => "new_form" })
+  post("/create_like", { :controller => "likes", :action => "create_row" })
+  post("/create_like_from_photo", { :controller => "likes", :action => "create_row_from_photo" })
 
   # READ
-  get("/fans", { :controller => "fans", :action => "index" })
-  get("/fans/:id_to_display", { :controller => "fans", :action => "show" })
+  get("/likes", { :controller => "likes", :action => "index" })
+  get("/likes/:id_to_display", { :controller => "likes", :action => "show" })
 
   # UPDATE
-  get("/fans/:prefill_with_id/edit", { :controller => "fans", :action => "edit_form" })
-  post("/update_fan/:id_to_modify", { :controller => "fans", :action => "update_row" })
+  get("/likes/:prefill_with_id/edit", { :controller => "likes", :action => "edit_form" })
+  post("/update_like/:id_to_modify", { :controller => "likes", :action => "update_row" })
 
   # DELETE
-  get("/delete_fan/:id_to_remove", { :controller => "fans", :action => "destroy_row" })
+  get("/delete_like/:id_to_remove", { :controller => "likes", :action => "destroy_row" })
+  get("/delete_like_from_photo/:id_to_remove", { :controller => "likes", :action => "destroy_row_from_photo" })
+  get("/delete_like_from_fan/:id_to_remove", { :controller => "likes", :action => "destroy_row_from_fan" })
 
   #------------------------------
 
@@ -45,6 +50,7 @@ Rails.application.routes.draw do
   # CREATE
   get("/comments/new", { :controller => "comments", :action => "new_form" })
   post("/create_comment", { :controller => "comments", :action => "create_row" })
+  post("/create_comment_from_photo", { :controller => "comments", :action => "create_row_from_photo" })
 
   # READ
   get("/comments", { :controller => "comments", :action => "index" })
@@ -56,6 +62,8 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_comment/:id_to_remove", { :controller => "comments", :action => "destroy_row" })
+  get("/delete_comment_from_photo/:id_to_remove", { :controller => "comments", :action => "destroy_row_from_photo" })
+  get("/delete_comment_from_owner/:id_to_remove", { :controller => "comments", :action => "destroy_row_from_owner" })
 
   #------------------------------
 
@@ -75,6 +83,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_photo/:id_to_remove", { :controller => "photos", :action => "destroy_row" })
+  get("/delete_photo_from_poster/:id_to_remove", { :controller => "photos", :action => "destroy_row_from_poster" })
 
   #------------------------------
 
